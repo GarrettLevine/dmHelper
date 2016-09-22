@@ -10,7 +10,10 @@ const defaultProps = {
 
 export default function App(props) {
   return (
-    <h1 className="ui header red">This is the APP!</h1>
+    <div>
+      <h1 className="ui header red">This is the APP!</h1>
+      <a href="http://localhost:8080/auth/login/facebook">Facebook</a>
+    </div>
   );
 }
 

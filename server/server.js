@@ -3,18 +3,15 @@ const session = require('express-session');
 const path = require('path');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
+const passport = require('passport');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 
 const port = process.env.PORT || 8080;
 const app = express();
 
-app.listen(port, () => {
-  console.log('App running on port', port);
-});
-
 //create MongoDB connection
-mongoose.connect('localhost:27017/'); // basic local connection
+mongoose.connect('localhost:27017/dmHelper'); // basic local connection
 const db = mongoose.connection;
 
 //session options
@@ -46,8 +43,8 @@ app.use(passport.session());
 
 // include routes
 require('./router/auth')(app, passport); // load our routes and pass in our app and fully configured passport
-const apiRouter = require('./server/router');
-app.use('/api', apiRouter);
+// const apiRouter = require('./server/router');
+// app.use('/api', apiRouter);
 
 app.listen(port, () => {
   console.log('App running on port', port);
