@@ -9,6 +9,7 @@ const propTypes = {
 
 const defaultProps = {
   className: '',
+  columns: 'twelve',
 };
 
 export default function Grid(props) {

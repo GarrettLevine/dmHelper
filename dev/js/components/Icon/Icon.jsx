@@ -16,8 +16,7 @@ export default function Icon(props) {
   const iconClass = classNames(type, 'icon', className);
 
   return (
-    <i className={iconClass}>
-    </i>
+    <i className={iconClass}></i>
   );
 }
 

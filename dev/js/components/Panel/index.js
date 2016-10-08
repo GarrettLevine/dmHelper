@@ -1,2 +1,2 @@
-import Panel form './Panel.jsx';
+import Panel from './Panel.jsx';
 export default Panel;

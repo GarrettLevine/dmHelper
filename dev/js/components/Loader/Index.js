@@ -1,2 +1,2 @@
-import Index from './Index.jsx';
-export default Index;
+import Loader from './Loader.jsx';
+export default Loader;

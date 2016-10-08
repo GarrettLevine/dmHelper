@@ -1,4 +1,5 @@
 import React, { PropTypes } from 'react';
+import { Grid, Column, Panel, NavLink } from './components';
 
 const propTypes = {
   // proptypes go here
@@ -11,8 +12,19 @@ const defaultProps = {
 export default function App(props) {
   return (
     <div>
-      <h1 className="ui header red">This is the APP!</h1>
-      <a href="http://localhost:8080/auth/login/facebook">Facebook</a>
+      <Panel
+        className="sidebarMenu inverted labeled vertical icon uncover"
+        menu
+        visible
+      >
+        <NavLink path="/" text="home" icon="home" />
+        <NavLink path="/npc" text="NPC" icon="child" />
+        <NavLink path="/story" text="story" icon="book" disabled />
+        <NavLink className="sidebarMenu__signIn" path="/signIn" text="Sign In" icon="sign in" />
+      </Panel>
+      <Grid>
+        {props.children}
+      </Grid>
     </div>
   );
 }

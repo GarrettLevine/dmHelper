@@ -27,8 +27,14 @@ export { _Checkbox as Checkbox };
 import _Column from './Column';
 export { _Column as Column };
 
+import _Panel from './Panel';
+export { _Panel as Panel };
+
 import _Grid from './Grid';
 export { _Grid as Grid };
 
 import _Row from './Row';
 export { _Row as Row };
+
+import _NavLink from './NavLink';
+export { _NavLink as NavLink };
