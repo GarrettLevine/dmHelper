@@ -42,8 +42,8 @@ app.use(passport.session());
 
 // include routes
 require('./router/auth')(app, passport); // load our routes and pass in our app and fully configured passport
-// const apiRouter = require('./server/router');
-// app.use('/api', apiRouter);
+const apiRouter = require('./router/api');
+app.use('/api', apiRouter);
 
 app.listen(port, () => {
   console.log('App running on port', port);

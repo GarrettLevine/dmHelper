@@ -30,16 +30,16 @@ module.exports = function(passport) {
     passport.use(new FacebookStrategy({
       clientID: process.env.FACEBOOK_APP_ID,
       clientSecret: process.env.FACEBOOK_CLIENT_SECRET,
-      callbackURL: 'http://localhost:3000/auth/facebook/return',
+      callbackURL: 'http://localhost:8080/auth/facebook/return',
       profileFields: ["emails", "displayName"],
       passReqToCallback : true, // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     }, (req, token, refreshToken, profile, done) => {
       // asynchronous
-      console.log('test');
       process.nextTick(() => {
         if (!req.user) {
           // find the user in the database based on their facebook id
           User.findOne({ 'facebook.id': profile.id }, (err, user) => {
+            console.log('third test');
             // if there is an error, stop everything and return that
             // ie an error connecting to the database
             if (err) return done(err);

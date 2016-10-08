@@ -1,5 +1,5 @@
-var express = require('express');
-var router = express.Router();
+const express = require('express');
+const router = express.Router();
 
 module.exports = (app, passport) => {
   // =====================================
@@ -11,8 +11,8 @@ module.exports = (app, passport) => {
   // handle the callback after facebook has authenticated the user
   app.get('/auth/facebook/return',
     passport.authenticate('facebook', {
-      successRedirect: '/',
-      failureRedirect: '/',
+      successRedirect: 'localhost:3000/',
+      failureRedirect: 'localhost:3000/',
     }));
 
   app.get('/auth/logout', function(req, res) {
