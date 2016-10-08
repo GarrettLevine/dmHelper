@@ -35,6 +35,7 @@ module.exports = function(passport) {
       passReqToCallback : true, // allows us to pass in the req from our route (lets us check if a user is logged in or not)
     }, (req, token, refreshToken, profile, done) => {
       // asynchronous
+      console.log('test');
       process.nextTick(() => {
         if (!req.user) {
           // find the user in the database based on their facebook id

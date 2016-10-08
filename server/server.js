@@ -11,7 +11,7 @@ const port = process.env.PORT || 8080;
 const app = express();
 
 //create MongoDB connection
-mongoose.connect('localhost:27017/dmHelper'); // basic local connection
+mongoose.connect('mongodb://localhost:27017/dmHelper'); // basic local connection
 const db = mongoose.connection;
 
 //session options
@@ -39,7 +39,6 @@ app.use(session(sessionOptions));
 app.use(passport.initialize());
 //restore session
 app.use(passport.session());
-
 
 // include routes
 require('./router/auth')(app, passport); // load our routes and pass in our app and fully configured passport
