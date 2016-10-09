@@ -1,34 +1,115 @@
 import React, { PropTypes } from 'react';
-import { Grid, Column, Panel, NavLink } from './components';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import classNames from 'classnames';
+
+import { Grid, Column, Panel, NavLink, Button, Icon } from './components';
+import SignIn from './SignIn/SignIn.jsx';
+import * as appActions from './ui-actions';
 
 const propTypes = {
-  // proptypes go here
+  children: PropTypes.node,
 };
 
 const defaultProps = {
-  // Default props go here
+  // default props go here
 };
 
-export default function App(props) {
-  return (
-    <div>
-      <Panel
-        className="sidebarMenu inverted labeled vertical icon uncover"
-        menu
-        visible
+export class App extends React.Component {
+  constructor(props) {
+    super(props);
+    
+    this.renderNavMenu = this.renderNavMenu.bind(this);
+    this.renderSignin = this.renderSignin.bind(this);
+  }
+
+  renderNavMenu() {
+    const navList = [
+      {
+        path: '/',
+        text: 'home',
+        icon: 'home',
+      },
+      {
+        path: '/npc',
+        text: 'NPC',
+        icon: 'child',
+      },
+      {
+        path: '/story',
+        text: 'Story',
+        icon: 'book',
+      },
+    ];
+
+    return navList.map(item => {
+      return <NavLink
+        key={item.text}
+        className={this.props.route === item.path ? 'active' : ''}
+        path={item.path}
+        text={item.text}
+        icon={item.icon}
+      />
+    });
+  }
+
+  renderSignin() {
+    const buttonClass = classNames('sidebarMenu__signIn item', {
+      active: this.props.app.signIn,
+    });
+
+    return (
+      <Button
+        className={buttonClass}
+        text="Sign In"
+        handleClick={()=> {
+          this.props.actions.setSignin(!this.props.app.signIn);
+        }}
       >
-        <NavLink path="/" text="home" icon="home" />
-        <NavLink path="/npc" text="NPC" icon="child" />
-        <NavLink path="/story" text="story" icon="book" disabled />
-        <NavLink className="sidebarMenu__signIn" path="/signIn" text="Sign In" icon="sign in" />
-      </Panel>
-      <Grid>
-        {props.children}
-      </Grid>
-    </div>
-  );
+        <Icon type="sign in" />
+      </Button>
+    );
+  }
+
+  render() {
+    const { children, app } = this.props;
+    return (
+      <div className="appContainer">
+        <Panel
+          className="sidebarMenu inverted labeled vertical icon uncover"
+          menu
+          visible
+        >
+          {this.renderNavMenu()}
+          {this.renderSignin()}
+
+        </Panel>
+        <div className="contentContainer">
+          { app.signIn ? <SignIn /> : null }
+          {children}
+        </div>
+      </div>
+    );
+  }
 }
 
 App.propTypes = propTypes;
 App.defaultProps = defaultProps;
 
+function mapStateToProps(state, ownProps) {
+  return {
+    route: ownProps.location.pathname,
+    app: state.app,
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators(appActions, dispatch),
+  };
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);

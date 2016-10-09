@@ -8,10 +8,11 @@ const propTypes = {
   handleClick: PropTypes.func,
   type: PropTypes.string,
   text: PropTypes.string,
+  color: PropTypes.string,
 };
 
 const defaultProps = {
-  text: '',
+  color: '',
 };
 
 /* Button Component
@@ -31,6 +32,7 @@ export default function Button(props) {
     type,
     text,
     icon,
+    color,
   } = props;
 
   const buttonClass = classNames('ui button', className, {
@@ -70,10 +72,10 @@ export default function Button(props) {
       case 'right-labeled': {
         return (
           <div className={buttonClass}>
-            <div className="ui icon button">
+            <div className={`ui icon button ${color}`}>
               {children}
             </div>
-            <a className="ui basic label">
+            <a className={`ui basic label ${color}`}>
               {text}
             </a>
           </div>

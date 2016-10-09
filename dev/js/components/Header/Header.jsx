@@ -1,12 +1,14 @@
 import React, { PropTypes } from 'react';
 import classNames from 'classnames';
 
+import Icon from '../Icon';
+
 const propTypes = {
   className: PropTypes.string,
   type: PropTypes.string,
   heading: PropTypes.string,
   subHeading: PropTypes.string,
-  icon: PropTypes.node,
+  icon: PropTypes.string,
 };
 
 const defaultProps = {
@@ -14,10 +16,9 @@ const defaultProps = {
 };
 
 export default function Header(props) {
-  const { className, type, heading, subHeading } = props;
+  const { className, type, heading, subHeading, icon } = props;
 
   const headerClass = classNames('ui header', {
-    icon: (type === 'icon'),
     sub: (type === 'sub-header'),
   }, className);
 
@@ -26,7 +27,7 @@ export default function Header(props) {
       case 'icon': {
         return (
           <h2 className={headerClass}>
-            {icon}
+            <Icon type={icon} />
             <div className="content">
               {heading}
               <div className="sub header">{subHeading}</div>
@@ -51,7 +52,7 @@ export default function Header(props) {
   
   return (
     <span>
-      {renderHeader()}
+      {renderHeader(type)}
     </span>
   );
 }
