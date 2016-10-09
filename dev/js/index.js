@@ -14,8 +14,8 @@ import routes from './routes/routes';
 import configureStore from './store/configure-store.js';
 
 const store = configureStore();
-
 const history = syncHistoryWithStore(browserHistory, store);
+
 //**************************************************
 //    R E N D E R
 //**************************************************

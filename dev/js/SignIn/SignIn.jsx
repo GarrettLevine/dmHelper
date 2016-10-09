@@ -19,6 +19,7 @@ export default function SignIn(props) {
         <Button
           type="basic"
           className="blue"
+          handleClick={()=>{}}
         >
           <Icon type="facebook" />
           Sign In

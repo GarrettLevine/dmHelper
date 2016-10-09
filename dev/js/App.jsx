@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classNames from 'classnames';
+import { Link } from 'react-router';
 
 import { Grid, Column, Panel, NavLink, Button, Icon } from './components';
 import SignIn from './SignIn/SignIn.jsx';
@@ -43,13 +44,16 @@ export class App extends React.Component {
     ];
 
     return navList.map(item => {
-      return <NavLink
-        key={item.text}
-        className={this.props.route === item.path ? 'active' : ''}
-        path={item.path}
-        text={item.text}
-        icon={item.icon}
-      />
+      return (
+        <Link
+          key={item.text}
+          className={`item ${this.props.route === item.path ? 'active' : ''}`}
+          to={item.path}
+        >
+          <Icon type={item.icon} />
+          {item.text}
+        </Link>
+      );
     });
   }
 

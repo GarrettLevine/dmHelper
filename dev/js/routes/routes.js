@@ -1,20 +1,22 @@
 //*************************************************
 //    M O D U L E   I M P O R T S
 //*************************************************
-import React, { Component } from 'react';
-import { Route, IndexRoute } from 'react-router';
+import React from 'react';
+import { Route } from 'react-router';
 
 //*************************************************
 //    C O M P O N E N T   I M P O R T S
 //*************************************************
 import App from '../App.jsx';
-import NPCcontainer from '../NPC/container.jsx';
+import NPCContainer from '../NPC/container.jsx';
 
 //*************************************************
 //    R O U T E S
 //*************************************************
-export default (
+const Routes = (
   <Route path="/" component={App}>
-    <Route path="/NPC" component={NPCcontainer} />
+    <Route path="/NPC" component={NPCContainer} />
   </Route>
 );
+
+export default Routes;

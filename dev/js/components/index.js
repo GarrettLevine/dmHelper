@@ -35,6 +35,3 @@ export { _Grid as Grid };
 
 import _Row from './Row';
 export { _Row as Row };
-
-import _NavLink from './NavLink';
-export { _NavLink as NavLink };
