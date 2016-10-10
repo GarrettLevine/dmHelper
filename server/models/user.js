@@ -1,6 +1,8 @@
-var mongoose = require('mongoose');
+'use strict'
 
-var UserSchema = new mongoose.Schema({
+const mongoose = require('mongoose');
+
+const UserSchema = new mongoose.Schema({
   facebook: {
     id: String,
     token: String,
@@ -17,5 +19,4 @@ var UserSchema = new mongoose.Schema({
   admin: Boolean,
 });
 
-var User = mongoose.model('User', UserSchema);
-module.exports = User;
+module.exports = mongoose.model('User', UserSchema);

@@ -1,3 +1,4 @@
+'use strict'
 // config/passport.js
 
 // load all the things we need
@@ -5,7 +6,7 @@ const GoogleStrategy = require('passport-google-oauth2').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
 
 // load up the user model
-var User = require('../models/user');
+const User = require('../models/user');
 
 // expose this function to our app using module.exports
 module.exports = function(passport) {
@@ -39,7 +40,6 @@ module.exports = function(passport) {
         if (!req.user) {
           // find the user in the database based on their facebook id
           User.findOne({ 'facebook.id': profile.id }, (err, user) => {
-            console.log('third test');
             // if there is an error, stop everything and return that
             // ie an error connecting to the database
             if (err) return done(err);
@@ -48,16 +48,19 @@ module.exports = function(passport) {
               return done(null, user);
             } else {
               // if there is no user found with that facebook id, create them
-              var newUser = new User();
+              let newUser = new User({
+                isAdmin: false,
+                facebook: {
+                  email: profile.emails[0].value,
+                  id: profile.id,
+                  name: profile.displayName,
+                  token,
+                }
+              });
               // set all of the facebook information in our user model
-              newUser.isAdmin = false;
-              newUser.facebook.email = profile.emails[0].value;
-              newUser.facebook.id = profile.id; // set the users facebook id                   
-              newUser.facebook.token = token; // we will save the token that facebook provides to the user                    
-              newUser.facebook.name = profile.displayName;
 
               // save our user to the database
-              newUser.save(function(err) {
+              newUser.save((err) => {
                 if (err) throw err;
                 // if successful, return the new user
                 return done(null, newUser);
@@ -66,7 +69,7 @@ module.exports = function(passport) {
           });
         } else {
           // user already exists and we want to link accounts
-          var user = req.user;
+          let user = req.user;
           //if the user exists and doesn't have a facebook ID, add it to their account
           user.isAdmin = false;
           user.facebook.id = profile.id; // set the users facebook id                   
