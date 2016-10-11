@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classNames from 'classnames';
-import { Link } from 'react-router';
+import { Link, withRouter } from 'react-router';
 
 import { Grid, Column, Panel, NavLink, Button, Icon } from './components';
 import SignIn from './SignIn/SignIn.jsx';
@@ -86,7 +86,6 @@ export class App extends React.Component {
         >
           {this.renderNavMenu()}
           {this.renderSignin()}
-
         </Panel>
         <div className="contentContainer">
           { app.signIn ? <SignIn /> : null }
@@ -113,7 +112,9 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-export default connect(
+const connectedApp = connect(
   mapStateToProps,
   mapDispatchToProps
 )(App);
+
+export default withRouter(connectedApp);
