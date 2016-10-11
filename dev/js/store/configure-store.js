@@ -6,16 +6,13 @@ import thunk from 'redux-thunk';
 import { browserHistory } from 'react-router';
 import { routerMiddleware } from 'react-router-redux';
 import rootReducer from '../root-reducer';
-// import thunk from 'redux-thunk';
-
-// set up the route middleware
 
 //*************************************************
 //   E X P O R T   S T O R E
 //*************************************************
 export default function configureStore(initialState) {
   const route = routerMiddleware(browserHistory);
-  
+
   const store = createStore(
     rootReducer,
     initialState,
