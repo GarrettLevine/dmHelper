@@ -15,7 +15,7 @@ import NPCContainer from '../NPC/container.jsx';
 //*************************************************
 const Routes = (
   <Route path="/" component={App}>
-    <Route path="/NPC" component={NPCContainer} />
+    <Route path="/npc" component={NPCContainer} />
   </Route>
 );
 
