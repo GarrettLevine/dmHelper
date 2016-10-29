@@ -6,7 +6,9 @@ import { Link } from 'react-router';
 
 import { Grid, Column, Panel, NavLink, Button, Icon } from './components';
 import SignIn from './SignIn/SignIn.jsx';
-import * as appActions from './ui-actions';
+
+import * as uiActions from './ui-actions';
+import * as userActions from './user/user-actions';
 
 const propTypes = {
   children: PropTypes.node,
@@ -22,6 +24,10 @@ export class App extends React.Component {
     
     this.renderNavMenu = this.renderNavMenu.bind(this);
     this.renderSignin = this.renderSignin.bind(this);
+  }
+
+  componentWillMount() {
+    this.props.userActions.getSession();
   }
 
   renderNavMenu() {
@@ -67,7 +73,7 @@ export class App extends React.Component {
         className={buttonClass}
         text="Sign In"
         handleClick={()=> {
-          this.props.actions.setSignin(!this.props.app.signIn);
+          this.props.uiActions.setSignin(!this.props.app.signIn);
         }}
       >
         <Icon type="sign in" />
@@ -108,7 +114,8 @@ function mapStateToProps(state, ownProps) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    actions: bindActionCreators(appActions, dispatch),
+    uiActions: bindActionCreators(uiActions, dispatch),
+    userActions: bindActionCreators(userActions, dispatch),
   };
 }
 

@@ -1,4 +1,5 @@
 import * as types from './action-types/app';
+import fetch from 'isomorphic-fetch';
 
 export function setSignin(value) {
   return {

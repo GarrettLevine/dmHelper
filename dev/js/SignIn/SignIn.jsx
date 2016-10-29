@@ -13,8 +13,8 @@ const defaultProps = {
 export default function SignIn(props) {
   return (
     <div className="signIn__container ui card">
-      <Link
-        to="/auth/login/facebook"
+      <a
+        href="/auth/login/facebook"
       >
         <Button
           type="basic"
@@ -24,7 +24,7 @@ export default function SignIn(props) {
           <Icon type="facebook" />
           Sign In
         </Button>
-      </Link>
+      </a>
       <Button
         type="basic"
         className="red"
