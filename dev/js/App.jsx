@@ -78,7 +78,7 @@ export class App extends React.Component {
   render() {
     const { children, app } = this.props;
     return (
-      <div className="appContainer">
+      <section className="appContainer">
         <Panel
           className="sidebarMenu inverted labeled vertical icon uncover"
           menu
@@ -91,7 +91,7 @@ export class App extends React.Component {
           { app.signIn ? <SignIn /> : null }
           {children}
         </div>
-      </div>
+      </section>
     );
   }
 }
