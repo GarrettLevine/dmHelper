@@ -14,7 +14,7 @@ export default function SignIn(props) {
   return (
     <div className="signIn__container ui card">
       <a
-        href="/auth/login/facebook"
+        href="http://localhost:8080/auth/login/facebook"
       >
         <Button
           type="basic"

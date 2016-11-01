@@ -1,9 +1,10 @@
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const cookieParser = require('cookie-parser');
 const express = require('express');
 const session = require('express-session');
-const path = require('path');
-const bodyParser = require('body-parser');
-const cookieParser = require('cookie-parser');
 const passport = require('passport');
+
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 
@@ -25,6 +26,14 @@ const sessionOptions = {
   }),
 };
 
+
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true,
+};
+//cors for the server
+app.use(cors(corsOptions));
+
 // parse incoming requests
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +52,7 @@ app.use(passport.session());
 // include routes
 require('./router/auth')(app, passport); // load our routes and pass in our app and fully configured passport
 const apiRouter = require('./router/api');
+
 app.use('/api', apiRouter);
 
 app.listen(port, () => {
