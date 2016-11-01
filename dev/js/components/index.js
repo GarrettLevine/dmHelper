@@ -35,3 +35,7 @@ export { _Grid as Grid };
 
 import _Row from './Row';
 export { _Row as Row };
+
+import _SideNav from './SideNav';
+export { _SideNav as SideNav };
+
