@@ -15,7 +15,7 @@ export default function userReducer(state = initialState, action) {
       return {
         ...state,
         isAuthenticated: true,
-        id: action.payload.id,
+        id: action.payload._id,
         facebook: action.payload.facebook,
         google: action.payload.google,
       };

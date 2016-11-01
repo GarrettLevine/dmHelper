@@ -13,8 +13,7 @@ export function getSession() {
   return dispatch => {
     fetch.get('http://localhost:8080/api/user/getUser')
       .then(response => {
-        console.log({ response });
-        // dispatch(setUser(response));
+        dispatch(setUser(response.user));
       });
   };
 }

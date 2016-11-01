@@ -53,7 +53,7 @@ export class App extends React.Component {
       return (
         <Link
           key={item.text}
-          className={`item ${this.props.route.includes(item.path) ? 'active' : ''}`}
+          className={`item ${this.props.route === item.path ? 'active' : ''}`}
           to={item.path}
         >
           <Icon type={item.icon} />
@@ -69,15 +69,26 @@ export class App extends React.Component {
     });
 
     return (
-      <Button
-        className={buttonClass}
-        text="Sign In"
-        handleClick={()=> {
-          this.props.uiActions.setSignin(!this.props.app.signIn);
-        }}
-      >
-        <Icon type="sign in" />
-      </Button>
+      <div>
+        { this.props.user.id ?
+          <Button
+            className={buttonClass}
+            text="Account"
+          >
+            <Icon type="user" />
+          </Button>
+          :
+          <Button
+            className={buttonClass}
+            text="Sign In"
+            handleClick={()=> {
+              this.props.uiActions.setSignin(!this.props.app.signIn);
+            }}
+          >
+            <Icon type="sign in" />
+          </Button>
+        }
+      </div>
     );
   }
 
@@ -109,6 +120,7 @@ function mapStateToProps(state, ownProps) {
   return {
     route: ownProps.location.pathname,
     app: state.app,
+    user: state.user,
   };
 }
 
