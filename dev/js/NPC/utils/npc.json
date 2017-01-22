@@ -33,7 +33,7 @@
     ],
     "highAbilityObj": {
         "strength": ["Powerful", "Brawny"],
-        "dexteriy": ["Agile", "Lithe", "Graceful"],
+        "dexterity": ["Agile", "Lithe", "Graceful"],
         "constituion": ["Hardy", "Healthy"],
         "intelligence": ["Intelligent", "Studious", "Learned"],
         "wisdom": ["Perceptive", "Insightful", "Spiritual"],

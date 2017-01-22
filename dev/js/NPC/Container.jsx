@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
-import { createNpc } from './utils';
 
-import { Card, Grid, Column, Header } from '../components';
+import { Grid, Column, Header } from '../components';
+import NpcCard from './components/NpcCard.jsx';
 
 const propTypes = {
   // proptypes go here
@@ -14,15 +14,9 @@ const defaultProps = {
 export default class NpcContainer extends React.Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      npc: { ...createNpc() },
-    };
   }
 
   render() {
-    const { npc } = this.state;
-
     return (
       <Grid className="NPCcontainer">
         <Column className="npcContainer__main" columns="seven" >
@@ -32,15 +26,7 @@ export default class NpcContainer extends React.Component {
             heading="NPC Creator"
             subHeading="discover and save interesting NPCs"
           />
-          <Card
-            header={`${npc.firstName} ${npc.lastName}`}
-            subHeader={npc.race}
-          >
-            <span className="right floated star">
-              <i className="star icon"></i>
-              Favourite
-            </span>
-          </Card>
+          <NpcCard />
         </Column>
         <Column columns="four npcContaienr__secondary">
         </Column>

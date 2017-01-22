@@ -13,3 +13,15 @@
   padding-top: 3.2rem;
   padding-left: 7.5rem;
 }
+
+.npcCard {
+  .header {
+    text-transform: uppercase;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+  }
+
+  .description {
+    text-transform: capitalize;
+  }
+}

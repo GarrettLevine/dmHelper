@@ -1,7 +1,9 @@
 import React, { PropTypes } from 'react';
+import classNames from 'classnames';
 
 const propTypes = {
-    children: PropTypes.element,
+    className: PropTypes.string,
+    children: PropTypes.node,
     header: PropTypes.string,
     subHeader: PropTypes.string,
 };
@@ -11,10 +13,10 @@ const defaultProps = {
 };
 
 export default function Card(props) {
-    const { children, header, subHeader } = props;
+    const { className, children, header, subHeader } = props;
 
     return (
-        <div className="ui card">
+        <div className={classNames('ui card', className)}>
             <div className="content">
                 <div className="header">{header}</div>
                 <div className="meta">

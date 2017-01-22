@@ -20,15 +20,16 @@ export default function createNpc() {
         npcFlawSecret,
     } = npc;
     const character = {};
-
     character.firstName = createName(firstName.fnBeginning, firstName.fnMiddle, firstName.fnEnd)
     character.lastName = createName(lastName.lnBeginning, lastName.lnMiddle, lastName.lnEnd);
     character.race = rItem(npcRace);
-    character.npcFeature = rItem(npcFeature);
-    character.highAbility = rKey(highAbilityObj);
-    character.highDesc = rItem(highAbilityObj[character.highAbility]);
-    character.lowAbility = rKey(lowAbilityObj);
-    character.lowDesc = rItem(lowAbilityObj[character.lowAbility]);
+    character.feature = rItem(npcFeature);
+    character.highAbility = {};
+    character.highAbility.ability = rKey(highAbilityObj);
+    character.highAbility.desc = rItem(highAbilityObj[character.highAbility.ability]);
+    character.lowAbility = {};
+    character.lowAbility.ability = rKey(lowAbilityObj);
+    character.lowAbility.desc = rItem(lowAbilityObj[character.lowAbility.ability]);
     character.talent = rItem(npcTalents);
     character.mannerisms = rItem(npcMannerisms);
     character.interaction = rItem(npcInteractionTraits);
