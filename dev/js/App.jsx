@@ -2,6 +2,7 @@ import React, { PropTypes } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import classNames from 'classnames';
+import * as fetch from './utils/fetch';
 
 import { Grid, Column, Panel, NavLink, Button, Icon, SideNav } from './components';
 import SignIn from './SignIn/SignIn.jsx';
@@ -20,7 +21,6 @@ const defaultProps = {
 export class App extends React.Component {
   constructor(props) {
     super(props);
-
   }
 
   componentWillMount() {

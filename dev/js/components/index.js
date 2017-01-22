@@ -9,6 +9,9 @@ export { _Form as Form };
 import _Button from './Button';
 export { _Button as Button };
 
+import _Card from './Card';
+export { _Card as Card };
+
 import _Icon from './Icon';
 export { _Icon as Icon };
 
